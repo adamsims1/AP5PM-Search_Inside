@@ -1,0 +1,18 @@
+<ion-content *ngIf="showOverlay">
+  <ion-button (click)="dismissModal()">Close</ion-button>
+
+  <ion-row *ngIf="selectedItemsData.data && selectedItemsData.data.matches.length > 0">
+    <ion-col size="50">
+      <h2>{{ selectedItemsData.data.matches.length }}</h2>
+      <h2>{{ selectedItemsData.data.page_count }}</h2>
+
+      <!-- Loop through each match in the data -->
+      <ion-item *ngFor="let match of selectedItemsData.data.matches" (click)="handleItemClick(match)">
+        <h2>{{ match.text }}</h2>
+        <!-- Add more elements based on the structure of the match if needed -->
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-button (click)="submit()">Submit</ion-button>
+</ion-content>

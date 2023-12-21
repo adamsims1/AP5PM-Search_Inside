@@ -1,0 +1,102 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      {{ bookData?.title }}
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()" color="light">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar color="primary">
+      <ion-title size="large">{{ bookData?.title }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card *ngIf="bookData">
+     <ion-card-header color="primary">
+      Book Details
+    </ion-card-header>
+    <ion-card-content class="ion-text-center">
+      <ion-thumbnail style="width: 200px; height: 200px; margin: auto;">
+        <ion-img [src]="getCoverImageUrl(bookData.cover_i)" alt="Book Cover"></ion-img>
+      </ion-thumbnail>
+      <ion-list lines="full">
+        <ion-item>
+          <ion-label>Title:</ion-label>
+          <ion-text>{{ bookData.title }}</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label>Author:</ion-label>
+          <ion-text>{{ bookData.author_name[0] }}</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label>Publisher:</ion-label>
+          <ion-text>{{ bookData.publisher[0] }}</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label>ISBN:</ion-label>
+          <ion-text>{{ bookData.isbn ? bookData.isbn.join(', ') : 'Not available' }}</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label>Published Year:</ion-label>
+          <ion-text>{{ bookData.publish_year ? bookData.publish_year.join(', ') : 'Not available' }}</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label>Number of Pages:</ion-label>
+          <ion-text>{{ bookData.number_of_pages_median || 'Not available' }}</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label>Language:</ion-label>
+          <ion-text>{{ bookData.language ? bookData.language.join(', ') : 'Not available' }}</ion-text>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label>Reading Log Count:</ion-label>
+          <ion-text>{{ bookData.readinglog_count || 'Not available' }}</ion-text>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label>Want to Read Count:</ion-label>
+          <ion-text>{{ bookData.want_to_read_count || 'Not available' }}</ion-text>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label>Currently Reading Count:</ion-label>
+          <ion-text>{{ bookData.currently_reading_count || 'Not available' }}</ion-text>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label>Already Read Count:</ion-label>
+          <ion-text>{{ bookData.already_read_count || 'Not available' }}</ion-text>
+        </ion-item>
+        
+        <!-- Add more items for other details you want to display -->
+      </ion-list>
+
+      <!-- Search input for searching inside the book -->
+
+
+      <!-- Display search results -->
+      <div *ngIf="searchResults.length > 0">
+        <h3>Search Results:</h3>
+        <ion-list>
+          <ion-item *ngFor="let result of searchResults">
+            {{ result.text }}
+          </ion-item>
+        </ion-list>
+      </div>
+
+      <ion-button expand="full" fill="solid" color="primary" (click)="openExternalLink()">
+        Open Book
+      </ion-button>
+      
+      
+    </ion-card-content>
+  </ion-card>
+</ion-content>

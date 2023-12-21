@@ -1,0 +1,24 @@
+ion-card {
+    background-color: #f4f4f4;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  ion-card-title {
+    font-size: 1.5em;
+  }
+  
+  ion-card-subtitle {
+    color: #777;
+  }
+  
+  ion-card-content {
+    padding: 16px;
+  }
+  
+  ion-button {
+    margin-top: 16px;
+  }
+
+  ion-thumbnail {
+    border-radius: 10px; /* Optional: Add rounded corners to the thumbnail */
+  }

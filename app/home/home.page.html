@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">
+      Books from archive.org OpenLibrary
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar color="primary">
+      <ion-title size="large" class="ion-text-center">OPENLIBRARY API</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+ 
+  <ion-grid class="ion-padding">
+    <ion-row>
+      <ion-col size="12">
+        <div id="container">
+          <!-- Input fields for startYear and endYear -->
+          <ion-item>
+            <ion-label position="floating">Book name</ion-label>
+            <ion-input type="text" [(ngModel)]="searchTerm"></ion-input>
+          </ion-item>
+          <ion-button expand="full" color="primary" (click)="searchBooks()">Search</ion-button>
+
+          <ion-list *ngIf="searchResults.length > 0" class="ion-margin-top">
+            <ion-item lines="full" *ngFor="let book of searchResults" (click)="openBookDetails(book)">
+              {{ book.title }}
+            </ion-item>
+          </ion-list>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
